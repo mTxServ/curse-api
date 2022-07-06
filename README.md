@@ -23,6 +23,9 @@ php composer.phar require mtxserv/curse-api
 ```php
 <?php
 
+use CurseApi\CurseClient;
+use GuzzleHttp\Exception\GuzzleException;
+
 $client = new CurseClient([
     'api_key' => 'YOUR_API_KEY', // https://console.curseforge.com/?#/api-keys
 ]);
@@ -31,7 +34,7 @@ try {
     $response = $client->get('/v1/games');
     $json = json_decode($response->getBody()->getContents(), \JSON_THROW_ON_ERROR);
     print_r($json);
-} catch (ClientException $e) {
+} catch (GuzzleException $e) {
     echo $e->getMessage();
     exit;
 }
