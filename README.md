@@ -1,0 +1,38 @@
+Curse API
+==========
+
+[![Latest Stable Version](https://poser.pugx.org/mtxserv/curse-api/v/stable.png)](https://packagist.org/packages/mtxserv/curse-api)
+
+Curse Api is a modern PHP library based on Guzzle for [CurseForge](https://docs.curseforge.com/#getting-started).
+
+## Dependencies
+
+* PHP 7
+* [Guzzle](http://www.guzzlephp.org): ^7.0
+
+## Installation
+
+Installation of Curse Api is only officially supported using Composer:
+
+```sh
+php composer.phar require mtxserv/curse-api
+```
+
+## Example
+
+```php
+<?php
+
+$client = new CurseClient([
+    'api_key' => 'YOUR_API_KEY', // https://console.curseforge.com/?#/api-keys
+]);
+
+try {
+    $response = $client->get('/v1/games');
+    $json = json_decode($response->getBody()->getContents(), \JSON_THROW_ON_ERROR);
+    print_r($json);
+} catch (ClientException $e) {
+    echo $e->getMessage();
+    exit;
+}
+```
