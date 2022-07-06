@@ -31,7 +31,18 @@ $client = new CurseClient([
 ]);
 
 try {
+    // Get Games
     $response = $client->get('/v1/games');
+    $json = json_decode($response->getBody()->getContents(), \JSON_THROW_ON_ERROR);
+    print_r($json);
+    
+    // Get All the Mods 7
+    $response = $client->get('/v1/games/mods/426926');
+    $json = json_decode($response->getBody()->getContents(), \JSON_THROW_ON_ERROR);
+    print_r($json);
+    
+    // Get All the Mods 7 - Files
+    $response = $client->get('/v1/games/mods/426926/files');
     $json = json_decode($response->getBody()->getContents(), \JSON_THROW_ON_ERROR);
     print_r($json);
 } catch (GuzzleException $e) {
