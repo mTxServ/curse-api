@@ -1,4 +1,4 @@
-Curse API
+🔥 Curse API
 ==========
 
 [![Latest Stable Version](https://poser.pugx.org/mtxserv/curse-api/v/stable.png)](https://packagist.org/packages/mtxserv/curse-api)
